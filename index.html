@@ -3,20 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ТаксиСервис - Быстрая подача такси</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>ТаксиСервис - Быстрая подача такси в любую точку города</title>
+    <meta name="description" content="Заказать такси онлайн. Быстрая подача, комфортные автомобили, вежливые водители и выгодные тарифы.">
+    
     <style>
-        /* Базовые стили */
+        /* Основные цвета */
         :root {
             --color-primary: #4CAF50;
             --color-primary-hover: #43a047;
             --color-dark: #1A1F2C;
-            --color-gray: #8E9196;
-            --color-light-gray: #f8f9fa;
         }
-        
+
+        /* Базовые стили */
         * {
             margin: 0;
             padding: 0;
@@ -24,21 +22,11 @@
         }
         
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Arial', sans-serif;
             color: #333;
-            line-height: 1.6;
+            line-height: 1.5;
         }
         
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-        
-        img {
-            max-width: 100%;
-        }
-        
-        /* Общие компоненты */
         .container {
             width: 100%;
             max-width: 1200px;
@@ -46,19 +34,51 @@
             padding: 0 20px;
         }
         
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+        
+        a:hover {
+            color: var(--color-primary);
+        }
+        
         .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 24px;
+            display: inline-block;
             background-color: var(--color-primary);
             color: white;
-            border: none;
-            border-radius: 8px;
+            padding: 1rem 2rem;
+            border-radius: 5px;
             font-weight: 600;
-            font-size: 16px;
             cursor: pointer;
             transition: background-color 0.3s, transform 0.2s;
+            border: none;
+            font-size: 1rem;
+            text-align: center;
         }
         
         .btn:hover {
@@ -66,495 +86,366 @@
             transform: translateY(-2px);
         }
         
-        .btn-lg {
-            padding: 16px 32px;
-            font-size: 18px;
-        }
-        
         .btn-outline {
             background-color: transparent;
-            border: 2px solid var(--color-primary);
-            color: var(--color-primary);
+            border: 2px solid white;
         }
         
         .btn-outline:hover {
-            background-color: var(--color-primary);
-            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .btn-large {
+            font-size: 1.25rem;
+            padding: 1.25rem 2.5rem;
+        }
+        
+        .btn-icon {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
         }
         
         .icon {
+            display: inline-block;
             width: 24px;
             height: 24px;
-            margin-right: 8px;
+            fill: currentColor;
+            flex-shrink: 0;
         }
         
-        /* Шапка */
+        /* Компоненты */
         header {
             background-color: white;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            padding: 15px 0;
+            padding: 1rem 0;
             position: sticky;
             top: 0;
             z-index: 100;
         }
         
-        .header-container {
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
         
         .logo {
-            font-size: 24px;
+            font-size: 1.75rem;
             font-weight: 700;
             color: var(--color-primary);
         }
         
-        .nav-links {
+        .nav {
             display: flex;
-            gap: 30px;
-        }
-        
-        .nav-link {
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        .nav-link:hover {
-            color: var(--color-primary);
+            gap: 2rem;
+            align-items: center;
         }
         
         .mobile-menu-btn {
             display: none;
             background: none;
             border: none;
-            font-size: 24px;
             cursor: pointer;
+            font-size: 1.5rem;
         }
         
-        /* Герой-секция */
         .hero {
             background-color: var(--color-dark);
             color: white;
-            padding: 80px 0;
+            padding: 5rem 0;
             position: relative;
             overflow: hidden;
         }
         
-        .hero-bg {
+        .hero::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            right: 0;
+            bottom: 0;
             background-image: url('https://images.unsplash.com/photo-1590039616589-de5dafe18542');
             background-size: cover;
             background-position: center;
-            opacity: 0.2;
+            opacity: 0.3;
         }
         
         .hero-content {
             position: relative;
-            z-index: 2;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
+            z-index: 10;
+            max-width: 600px;
         }
         
-        .hero h1 {
-            font-size: 48px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            line-height: 1.2;
+        .section {
+            padding: 5rem 0;
         }
         
-        .hero p {
-            font-size: 18px;
-            max-width: 800px;
-            margin-bottom: 30px;
-            opacity: 0.9;
+        .section-gray {
+            background-color: #f8f9fa;
         }
         
-        .hero-buttons {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        
-        /* Преимущества */
         .features {
-            padding: 80px 0;
-            background-color: var(--color-light-gray);
-        }
-        
-        .section-title {
-            text-align: center;
-            font-size: 36px;
-            font-weight: 700;
-            margin-bottom: 50px;
-        }
-        
-        .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            gap: 2rem;
         }
         
         .feature-card {
             background-color: white;
             border-radius: 10px;
-            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
             text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s, box-shadow 0.3s;
         }
         
         .feature-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
         
         .feature-icon {
+            width: 80px;
+            height: 80px;
+            background-color: rgba(76, 175, 80, 0.1);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 70px;
-            height: 70px;
-            margin: 0 auto 20px;
-            background-color: rgba(76, 175, 80, 0.1);
-            border-radius: 50%;
+            margin: 0 auto 1.5rem;
         }
         
         .feature-icon svg {
-            width: 35px;
-            height: 35px;
+            width: 40px;
+            height: 40px;
             color: var(--color-primary);
         }
         
-        .feature-title {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-        
-        .feature-desc {
-            color: #666;
-        }
-        
-        /* Тарифы */
-        .pricing {
-            padding: 80px 0;
-        }
-        
-        .pricing-grid {
+        .tariffs {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            gap: 2rem;
         }
         
-        .pricing-card {
-            border: 1px solid #eee;
+        .tariff-card {
+            background-color: white;
             border-radius: 10px;
-            padding: 30px;
-            text-align: center;
-            transition: box-shadow 0.3s, transform 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
             position: relative;
-            overflow: hidden;
         }
         
-        .pricing-card:hover {
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transform: translateY(-5px);
+        .tariff-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
         
-        .pricing-card.popular {
-            border-color: var(--color-primary);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .popular-badge {
+        .tariff-popular {
             position: absolute;
             top: 0;
             right: 0;
             background-color: var(--color-primary);
             color: white;
-            padding: 5px 15px;
-            font-size: 14px;
-            border-bottom-left-radius: 10px;
+            padding: 0.5rem 1rem;
+            border-radius: 0 10px 0 10px;
+            font-weight: 600;
         }
         
-        .price {
-            font-size: 36px;
+        .tariff-price {
+            font-size: 2rem;
             font-weight: 700;
-            margin: 20px 0;
+            margin: 1rem 0;
         }
         
-        .price-currency {
-            font-size: 20px;
-            vertical-align: super;
-        }
-        
-        .pricing-features {
+        .check-list {
             list-style: none;
-            margin: 20px 0 30px;
+            margin-bottom: 1.5rem;
         }
         
-        .pricing-features li {
+        .check-list li {
             display: flex;
             align-items: center;
-            margin-bottom: 10px;
-            justify-content: center;
+            margin-bottom: 0.75rem;
         }
         
-        .pricing-features svg {
-            width: 16px;
-            height: 16px;
+        .check-list li svg {
+            margin-right: 0.75rem;
             color: var(--color-primary);
-            margin-right: 8px;
-            flex-shrink: 0;
         }
         
-        /* Мобильное приложение */
-        .app {
-            padding: 80px 0;
-            background-color: var(--color-dark);
-            color: white;
-        }
-        
-        .app-content {
+        .app-promo {
             display: flex;
-            align-items: center;
-            gap: 50px;
-        }
-        
-        .app-info {
-            flex: 1;
-        }
-        
-        .app-title {
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
-        
-        .app-desc {
-            margin-bottom: 30px;
-            opacity: 0.9;
-        }
-        
-        .app-buttons {
-            display: flex;
-            gap: 15px;
             flex-wrap: wrap;
+            align-items: center;
+            gap: 3rem;
         }
         
-        .app-img {
+        .app-promo-content {
             flex: 1;
-            max-width: 450px;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            min-width: 300px;
         }
         
-        /* Отзывы */
+        .app-promo-image {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .app-promo-image img {
+            width: 100%;
+            max-width: 400px;
+            display: block;
+            margin: 0 auto;
+            border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .store-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
         .testimonials {
-            padding: 80px 0;
-            background-color: var(--color-light-gray);
-        }
-        
-        .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            gap: 2rem;
         }
         
         .testimonial-card {
             background-color: white;
             border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
         }
         
         .testimonial-header {
             display: flex;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 1rem;
         }
         
         .testimonial-avatar {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             overflow: hidden;
-            margin-right: 15px;
+            margin-right: 1rem;
         }
         
-        .testimonial-name {
-            font-weight: 600;
-            font-size: 18px;
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
         .stars {
-            display: flex;
             color: var(--color-primary);
-            margin-top: 5px;
+            display: flex;
         }
         
-        .testimonial-text {
-            color: #555;
-            font-style: italic;
-        }
-        
-        /* Футер */
         footer {
             background-color: var(--color-dark);
             color: white;
-            padding: 50px 0 20px;
+            padding: 3rem 0;
         }
         
-        .footer-grid {
+        .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
+            gap: 2rem;
         }
         
         .footer-logo {
-            font-size: 24px;
-            font-weight: 700;
             color: var(--color-primary);
-            margin-bottom: 15px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
         }
         
-        .footer-description {
-            opacity: 0.8;
-            margin-bottom: 20px;
-        }
-        
-        .social-icons {
+        .footer-social {
             display: flex;
-            gap: 15px;
+            gap: 1rem;
+            margin-top: 1rem;
         }
         
-        .social-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background-color 0.3s;
+        .footer-social a {
+            color: white;
+            transition: color 0.3s;
         }
         
-        .social-icon:hover {
-            background-color: var(--color-primary);
+        .footer-social a:hover {
+            color: var(--color-primary);
         }
         
-        .social-icon svg {
-            width: 18px;
-            height: 18px;
+        .footer-links h4 {
+            margin-bottom: 1.5rem;
         }
         
-        .footer-heading {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-        
-        .footer-links {
+        .footer-links ul {
             list-style: none;
         }
         
         .footer-links li {
-            margin-bottom: 10px;
+            margin-bottom: 0.75rem;
         }
         
-        .footer-links a {
-            opacity: 0.8;
-            transition: opacity 0.3s;
-        }
-        
-        .footer-links a:hover {
-            opacity: 1;
-            color: var(--color-primary);
-        }
-        
-        .contact-item {
+        .footer-contact li {
             display: flex;
             align-items: center;
-            margin-bottom: 15px;
-            opacity: 0.8;
+            margin-bottom: 0.75rem;
         }
         
-        .contact-item svg {
-            margin-right: 10px;
-            width: 18px;
-            height: 18px;
-            flex-shrink: 0;
+        .footer-contact svg {
+            margin-right: 0.75rem;
         }
         
-        .copyright {
+        .footer-bottom {
             text-align: center;
-            padding-top: 20px;
+            padding-top: 2rem;
+            margin-top: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            opacity: 0.6;
-            font-size: 14px;
+            opacity: 0.7;
         }
         
-        /* Медиазапросы */
-        @media (max-width: 992px) {
-            .app-content {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-        
+        /* Адаптив */
         @media (max-width: 768px) {
-            .nav-links, .header-btn {
+            .nav {
                 display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav.active {
+                display: flex;
             }
             
             .mobile-menu-btn {
                 display: block;
             }
             
-            .hero h1 {
-                font-size: 36px;
+            .app-promo, .features, .tariffs, .testimonials {
+                grid-template-columns: 1fr;
             }
             
-            .section-title {
-                font-size: 30px;
+            .hero {
+                text-align: center;
+                padding: 3rem 0;
             }
             
-            .mobile-menu {
-                position: fixed;
-                top: 70px;
-                left: 0;
-                right: 0;
-                background-color: white;
-                padding: 20px;
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-                display: none;
-                flex-direction: column;
-                gap: 15px;
-                z-index: 90;
+            .hero-content {
+                margin: 0 auto;
             }
             
-            .mobile-menu.active {
-                display: flex;
-            }
-        }
-        
-        @media (max-width: 576px) {
             .hero-buttons {
-                flex-direction: column;
-                width: 100%;
-            }
-            
-            .btn {
-                width: 100%;
+                justify-content: center;
             }
         }
     </style>
@@ -562,450 +453,426 @@
       <script src="https://cdn.poehali.dev/intertnal/js/pp-min-2.js"></script>
   </head>
 <body>
-    <!-- Шапка -->
     <header>
-        <div class="container header-container">
-            <a href="#" class="logo">ТаксиСервис</a>
-            
-            <nav class="nav-links">
-                <a href="#" class="nav-link">Главная</a>
-                <a href="#features" class="nav-link">Преимущества</a>
-                <a href="#pricing" class="nav-link">Тарифы</a>
-                <a href="#app" class="nav-link">Приложение</a>
-                <a href="#contact" class="nav-link">Контакты</a>
+        <div class="container header-content">
+            <div class="logo">ТаксиСервис</div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="icon">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+            <nav class="nav" id="mainNav">
+                <a href="#">Главная</a>
+                <a href="#features">Преимущества</a>
+                <a href="#tariffs">Тарифы</a>
+                <a href="#testimonials">Отзывы</a>
+                <a href="#contact">Контакты</a>
+                <a href="tel:+78001234567" class="btn btn-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="icon">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                    </svg>
+                    Заказать
+                </a>
             </nav>
-            
-            <a href="tel:+78001234567" class="btn header-btn">
-                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                </svg>
-                8 (800) 123-45-67
-            </a>
-            
-            <button class="mobile-menu-btn">☰</button>
-        </div>
-        
-        <div class="mobile-menu">
-            <a href="#" class="nav-link">Главная</a>
-            <a href="#features" class="nav-link">Преимущества</a>
-            <a href="#pricing" class="nav-link">Тарифы</a>
-            <a href="#app" class="nav-link">Приложение</a>
-            <a href="#contact" class="nav-link">Контакты</a>
-            <a href="tel:+78001234567" class="btn">
-                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                </svg>
-                8 (800) 123-45-67
-            </a>
         </div>
     </header>
-    
-    <!-- Герой-секция -->
+
     <section class="hero">
-        <div class="hero-bg"></div>
-        <div class="container hero-content">
-            <h1>Быстрая подача такси<br>в любую точку города</h1>
-            <p>Комфортные автомобили, вежливые водители и выгодные тарифы для ваших поездок. Вызовите такси всего в один клик!</p>
-            <div class="hero-buttons">
-                <a href="#" class="btn btn-lg">
-                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <polygon points="10 8 16 12 10 16 10 8"></polygon>
-                    </svg>
-                    Вызвать такси
-                </a>
-                <a href="#app" class="btn btn-lg btn-outline">
-                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                        <polyline points="7 10 12 15 17 10"></polyline>
-                        <line x1="12" y1="15" x2="12" y2="3"></line>
-                    </svg>
-                    Скачать приложение
-                </a>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Преимущества -->
-    <section class="features" id="features">
         <div class="container">
-            <h2 class="section-title">Наши преимущества</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <polyline points="12 6 12 12 16 14"></polyline>
+            <div class="hero-content">
+                <h1>Быстрая подача такси в любую точку города</h1>
+                <p>Комфортные автомобили, вежливые водители и выгодные тарифы для ваших поездок</p>
+                <div class="hero-buttons" style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
+                    <a href="tel:+78001234567" class="btn btn-large btn-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="icon">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
                         </svg>
-                    </div>
-                    <h3 class="feature-title">Быстрая подача</h3>
-                    <p class="feature-desc">Автомобиль приедет в течение 5-7 минут после заказа в любой район города</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        Вызвать такси
+                    </a>
+                    <a href="#" class="btn btn-outline btn-large btn-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="icon">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                         </svg>
-                    </div>
-                    <h3 class="feature-title">Безопасность</h3>
-                    <p class="feature-desc">Все водители проходят строгий отбор и проверку документов перед началом работы</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="4" width="20" height="16" rx="2"></rect>
-                            <path d="M7 15h0M2 9.5h20"></path>
-                        </svg>
-                    </div>
-                    <h3 class="feature-title">Выгодные цены</h3>
-                    <p class="feature-desc">Стоимость поездки всегда прозрачна и выгодна для клиента без скрытых платежей</p>
+                        Скачать приложение
+                    </a>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- Тарифы -->
-    <section class="pricing" id="pricing">
+
+    <section class="section section-gray" id="features">
         <div class="container">
-            <h2 class="section-title">Тарифы</h2>
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <h3 class="feature-title">Эконом</h3>
-                    <p class="feature-desc">Недорогие поездки по городу</p>
-                    <div class="price"><span class="price-currency">от</span> 99 ₽</div>
-                    <ul class="pricing-features">
+            <h2>Наши преимущества</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3>Быстрая подача</h3>
+                    <p>Автомобиль приедет в течение 5-7 минут после заказа</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                    </div>
+                    <h3>Безопасность</h3>
+                    <p>Все водители проходят строгий отбор и проверку документов</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
+                        </svg>
+                    </div>
+                    <h3>Выгодные цены</h3>
+                    <p>Стоимость поездки всегда прозрачна и выгодна для клиента</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="tariffs">
+        <div class="container">
+            <h2>Тарифы</h2>
+            <div class="tariffs">
+                <div class="tariff-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"></path>
+                        </svg>
+                    </div>
+                    <h3>Эконом</h3>
+                    <p>Недорогие поездки по городу</p>
+                    <div class="tariff-price">от 99 ₽</div>
+                    <ul class="check-list">
                         <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="20 6 9 17 4 12"></polyline>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                             </svg>
                             Комфортные автомобили
                         </li>
                         <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="20 6 9 17 4 12"></polyline>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                             </svg>
                             Быстрая подача
                         </li>
                         <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="20 6 9 17 4 12"></polyline>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                             </svg>
                             Опытные водители
                         </li>
                     </ul>
-                    <a href="#" class="btn">Выбрать</a>
+                    <a href="tel:+78001234567" class="btn" style="width: 100%;">Выбрать</a>
                 </div>
-                
-                <div class="pricing-card popular">
-                    <span class="popular-badge">Популярный</span>
-                    <h3 class="feature-title">Комфорт</h3>
-                    <p class="feature-desc">Поездки повышенного комфорта</p>
-                    <div class="price"><span class="price-currency">от</span> 149 ₽</div>
-                    <ul class="pricing-features">
+                <div class="tariff-card" style="border: 2px solid var(--color-primary);">
+                    <div class="tariff-popular">Популярный</div>
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"></path>
+                        </svg>
+                    </div>
+                    <h3>Комфорт</h3>
+                    <p>Поездки повышенного комфорта</p>
+                    <div class="tariff-price">от 149 ₽</div>
+                    <ul class="check-list">
                         <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="20 6 9 17 4 12"></polyline>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                             </svg>
                             Автомобили бизнес-класса
                         </li>
                         <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="20 6 9 17 4 12"></polyline>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                             </svg>
                             Вода в салоне
                         </li>
                         <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="20 6 9 17 4 12"></polyline>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                             </svg>
                             Зарядка для телефона
                         </li>
                         <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="20 6 9 17 4 12"></polyline>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                             </svg>
                             Wi-Fi в салоне
                         </li>
                     </ul>
-                    <a href="#" class="btn">Выбрать</a>
+                    <a href="tel:+78001234567" class="btn" style="width: 100%;">Выбрать</a>
                 </div>
-                
-                <div class="pricing-card">
-                    <h3 class="feature-title">Бизнес</h3>
-                    <p class="feature-desc">Премиум-поездки для бизнеса</p>
-                    <div class="price"><span class="price-currency">от</span> 249 ₽</div>
-                    <ul class="pricing-features">
+                <div class="tariff-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"></path>
+                        </svg>
+                    </div>
+                    <h3>Бизнес</h3>
+                    <p>Премиум-поездки для бизнеса</p>
+                    <div class="tariff-price">от 249 ₽</div>
+                    <ul class="check-list">
                         <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="20 6 9 17 4 12"></polyline>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                             </svg>
                             Премиум автомобили
                         </li>
                         <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="20 6 9 17 4 12"></polyline>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                             </svg>
                             Водители в костюмах
                         </li>
                         <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="20 6 9 17 4 12"></polyline>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                             </svg>
                             Встреча с табличкой
                         </li>
                         <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="20 6 9 17 4 12"></polyline>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                             </svg>
                             Помощь с багажом
                         </li>
                     </ul>
-                    <a href="#" class="btn">Выбрать</a>
+                    <a href="tel:+78001234567" class="btn" style="width: 100%;">Выбрать</a>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- Мобильное приложение -->
-    <section class="app" id="app">
-        <div class="container">
-            <div class="app-content">
-                <div class="app-info">
-                    <h2 class="app-title">Скачайте наше приложение</h2>
-                    <p class="app-desc">Заказывайте такси, отслеживайте поездки и платите удобным способом прямо с вашего смартфона. Установите приложение и получите скидку 20% на первую поездку!</p>
-                    <div class="app-buttons">
-                        <a href="#" class="btn">
-                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 19H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v5.5"></path>
-                                <path d="M16 19h6"></path>
-                                <path d="M19 16v6"></path>
-                            </svg>
-                            App Store
-                        </a>
-                        <a href="#" class="btn">
-                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                            </svg>
-                            Google Play
-                        </a>
-                    </div>
+
+    <section class="section" style="background-color: var(--color-dark); color: white;">
+        <div class="container app-promo">
+            <div class="app-promo-content">
+                <h2 style="text-align: left; color: white;">Скачайте наше приложение</h2>
+                <p>Заказывайте такси, отслеживайте поездки и платите удобным способом прямо с вашего смартфона</p>
+                <div class="store-buttons">
+                    <a href="#" class="btn btn-outline btn-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="icon">
+                            <path d="M17.5645 13.7002C17.5488 10.9509 19.8277 9.85688 19.9121 9.81641C18.6094 7.88477 16.6113 7.62402 15.8877 7.60352C14.2441 7.4209 12.6592 8.55273 11.8271 8.55273C10.9805 8.55273 9.66992 7.62402 8.29199 7.65527C6.5332 7.68652 4.89258 8.67578 3.98438 10.2021C2.10938 13.2998 3.51562 17.8623 5.31738 20.3467C6.22559 21.5566 7.28906 22.9043 8.67773 22.8438C10.0225 22.7764 10.5537 21.9443 12.1631 21.9443C13.7578 21.9443 14.2441 22.8438 15.6475 22.8096C17.0996 22.7764 17.9873 21.5908 18.8594 20.3672C19.8965 18.9707 20.3145 17.5879 20.332 17.5195C20.293 17.5059 17.585 16.4824 17.5645 13.7002Z"></path>
+                            <path d="M15.1328 5.66406C15.8633 4.76562 16.3564 3.5625 16.2139 2.33398C15.1748 2.38496 13.8818 3.05078 13.1172 3.92969C12.4355 4.69922 11.8389 5.9502 12.0010 7.14844C13.1719 7.24121 14.375 6.55273 15.1328 5.66406Z"></path>
+                        </svg>
+                        App Store
+                    </a>
+                    <a href="#" class="btn btn-outline btn-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="icon">
+                            <path d="M3.609 2.25L13.1 11.9l2.4-2.47L5.25 2.25h-1.64zm.99.001l9.54 9.705L21 3.251H4.599zm15.98 1L10.1 14.031 4.5 8.5v9.75L10.1 12l10.5 10.949V3.251zM3.9 4l.001 13.9L14.352 11 3.9 4z"></path>
+                        </svg>
+                        Google Play
+                    </a>
                 </div>
-                <div class="app-img">
-                    <img src="https://images.unsplash.com/photo-1616187175003-bfe603baa900" alt="Мобильное приложение такси">
-                </div>
+            </div>
+            <div class="app-promo-image">
+                <img src="https://images.unsplash.com/photo-1616187175003-bfe603baa900" alt="Мобильное приложение">
             </div>
         </div>
     </section>
-    
-    <!-- Отзывы клиентов -->
-    <section class="testimonials">
+
+    <section class="section section-gray" id="testimonials">
         <div class="container">
-            <h2 class="section-title">Что говорят наши клиенты</h2>
-            <div class="testimonials-grid">
+            <h2>Что говорят наши клиенты</h2>
+            <div class="testimonials">
                 <div class="testimonial-card">
                     <div class="testimonial-header">
                         <div class="testimonial-avatar">
                             <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36" alt="Аватар клиента">
                         </div>
                         <div>
-                            <h4 class="testimonial-name">Алексей Петров</h4>
+                            <h4>Алексей Петров</h4>
                             <div class="stars">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
-                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="16" height="16">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                                 </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
-                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="16" height="16">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                                 </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
-                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="16" height="16">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                                 </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
-                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="16" height="16">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                                 </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
-                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="16" height="16">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                                 </svg>
                             </div>
                         </div>
                     </div>
-                    <p class="testimonial-text">"Очень доволен сервисом. Такси приезжает быстро, водители вежливые, а цены приятно удивляют!"</p>
+                    <p>"Очень доволен сервисом. Такси приезжает быстро, водители вежливые, а цены приятно удивляют!"</p>
                 </div>
-                
                 <div class="testimonial-card">
                     <div class="testimonial-header">
                         <div class="testimonial-avatar">
                             <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e" alt="Аватар клиента">
                         </div>
                         <div>
-                            <h4 class="testimonial-name">Екатерина Смирнова</h4>
+                            <h4>Екатерина Смирнова</h4>
                             <div class="stars">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
-                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="16" height="16">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                                 </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
-                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="16" height="16">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                                 </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
-                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="16" height="16">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                                 </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
-                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="16" height="16">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                                 </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
-                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="16" height="16">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                                 </svg>
                             </div>
                         </div>
                     </div>
-                    <p class="testimonial-text">"Регулярно пользуюсь этим сервисом для поездок на работу. Всегда вовремя, чисто в салоне и приятно общаться с водителями."</p>
+                    <p>"Регулярно пользуюсь этим сервисом для поездок на работу. Всегда вовремя, чисто в салоне и приятно общаться с водителями."</p>
                 </div>
-                
                 <div class="testimonial-card">
                     <div class="testimonial-header">
                         <div class="testimonial-avatar">
                             <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61" alt="Аватар клиента">
                         </div>
                         <div>
-                            <h4 class="testimonial-name">Михаил Иванов</h4>
+                            <h4>Михаил Иванов</h4>
                             <div class="stars">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
-                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="16" height="16">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                                 </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
-                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="16" height="16">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                                 </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
-                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="16" height="16">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                                 </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
-                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="16" height="16">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                                 </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
-                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" stroke="currentColor" width="16" height="16">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path>
                                 </svg>
                             </div>
                         </div>
                     </div>
-                    <p class="testimonial-text">"Удобное приложение, можно отслеживать машину на карте. Один раз водитель задержался, но служба поддержки быстро решила вопрос."</p>
+                    <p>"Удобное приложение, можно отслеживать машину на карте. Один раз водитель задержался, но служба поддержки быстро решила вопрос."</p>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- Футер -->
+
     <footer id="contact">
         <div class="container">
-            <div class="footer-grid">
+            <div class="footer-content">
                 <div>
                     <div class="footer-logo">ТаксиСервис</div>
-                    <p class="footer-description">Быстрые и комфортные поездки по городу по выгодным ценам</p>
-                    <div class="social-icons">
-                        <a href="#" class="social-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                    <p>Быстрые и комфортные поездки по городу по выгодным ценам</p>
+                    <div class="footer-social">
+                        <a href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="24" height="24">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path>
                             </svg>
                         </a>
-                        <a href="#" class="social-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        <a href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="24" height="24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"></path>
                             </svg>
                         </a>
-                        <a href="#" class="social-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                        <a href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="24" height="24">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"></path>
                             </svg>
                         </a>
                     </div>
                 </div>
-                
-                <div>
-                    <h3 class="footer-heading">Компания</h3>
-                    <ul class="footer-links">
+                <div class="footer-links">
+                    <h4>Компания</h4>
+                    <ul>
                         <li><a href="#">О нас</a></li>
                         <li><a href="#">Новости</a></li>
                         <li><a href="#">Блог</a></li>
                         <li><a href="#">Карьера</a></li>
                     </ul>
                 </div>
-                
-                <div>
-                    <h3 class="footer-heading">Информация</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Тарифы</a></li>
+                <div class="footer-links">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="#tariffs">Тарифы</a></li>
                         <li><a href="#">Для водителей</a></li>
                         <li><a href="#">Часто задаваемые вопросы</a></li>
                         <li><a href="#">Правила пользования</a></li>
                     </ul>
                 </div>
-                
-                <div>
-                    <h3 class="footer-heading">Контакты</h3>
-                    <div class="contact-item">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                        </svg>
-                        +7 (800) 123-45-67
-                    </div>
-                    <div class="contact-item">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                            <polyline points="22,6 12,13 2,6"></polyline>
-                        </svg>
-                        info@taxiservice.ru
-                    </div>
-                    <div class="contact-item">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                            <circle cx="12" cy="10" r="3"></circle>
-                        </svg>
-                        г. Москва, ул. Примерная, 123
-                    </div>
+                <div class="footer-contact">
+                    <h4>Контакты</h4>
+                    <ul>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                            </svg>
+                            +7 (800) 123-45-67
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                            info@taxiservice.ru
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            г. Москва, ул. Примерная, 123
+                        </li>
+                    </ul>
                 </div>
             </div>
-            
-            <div class="copyright">
-                <p>© 2025 ТаксиСервис. Все права защищены.</p>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ТаксиСервис. Все права защищены.</p>
             </div>
         </div>
     </footer>
-    
+
     <script>
-        // Простой JavaScript для мобильного меню
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuButton = document.querySelector('.mobile-menu-btn');
-            const mobileMenu = document.querySelector('.mobile-menu');
-            
-            menuButton.addEventListener('click', function() {
-                mobileMenu.classList.toggle('active');
-            });
-            
-            // Закрытие меню при клике на ссылку
-            const mobileLinks = document.querySelectorAll('.mobile-menu a');
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    mobileMenu.classList.remove('active');
-                });
-            });
-            
-            // Плавная прокрутка к секциям при клике на ссылки
-            const navLinks = document.querySelectorAll('a[href^="#"]');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        window.scrollTo({
-                            top: target.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
+        // Плавная прокрутка к якорям
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                if (this.getAttribute('href') === "#") return;
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
+        
+        // Мобильное меню
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        if (mobileMenuBtn && mainNav) {
+            mobileMenuBtn.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+            });
+        }
     </script>
 </body>
 </html>

@@ -431,7 +431,7 @@ const Index = () => {
                 <a href="#" className="hover:text-[#4CAF50]">
                   <Icon name="Instagram" />
                 </a>
-                <a href="#" className="hover=text-[#4CAF50]">
+                <a href="#" className="hover:text-[#4CAF50]">
                   <Icon name="Twitter" />
                 </a>
               </div>
@@ -440,22 +440,22 @@ const Index = () => {
               <h4 className="font-semibold mb-4">Компания</h4>
               <ul className="space-y-2 opacity-80">
                 <li>
-                  <a href="#" className="hover=text-[#4CAF50]">
+                  <a href="#" className="hover:text-[#4CAF50]">
                     О нас
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover=text-[#4CAF50]">
+                  <a href="#" className="hover:text-[#4CAF50]">
                     Новости
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover=text-[#4CAF50]">
+                  <a href="#" className="hover:text-[#4CAF50]">
                     Блог
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover=text-[#4CAF50]">
+                  <a href="#" className="hover:text-[#4CAF50]">
                     Карьера
                   </a>
                 </li>
@@ -465,22 +465,22 @@ const Index = () => {
               <h4 className="font-semibold mb-4">Информация</h4>
               <ul className="space-y-2 opacity-80">
                 <li>
-                  <a href="#" className="hover=text-[#4CAF50]">
+                  <a href="#" className="hover:text-[#4CAF50]">
                     Тарифы
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover=text-[#4CAF50]">
+                  <a href="#" className="hover:text-[#4CAF50]">
                     Для водителей
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover=text-[#4CAF50]">
+                  <a href="#" className="hover:text-[#4CAF50]">
                     Часто задаваемые вопросы
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover=text-[#4CAF50]">
+                  <a href="#" className="hover:text-[#4CAF50]">
                     Правила пользования
                   </a>
                 </li>
